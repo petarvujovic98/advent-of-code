@@ -1,12 +1,10 @@
-use std::fs;
-
 /// Get the sum of calories for each of the elfs in the input file.
 /// First split into strings by the empty line which separates elf entries.
 /// Then do some string cleanup to remove accidental double empty lines or whitespace characters.
 /// Then fold those lines into sums of calories by parsing each line as an unsigned 32 bit integer.
 /// Finally sort and reverse the vector.
 fn get_elf_calories(filename: &str) -> Vec<u32> {
-    let mut calories_per_elf = fs::read_to_string(filename)
+    let mut calories_per_elf = std::fs::read_to_string(filename)
         .unwrap()
         .split("\n\n")
         .filter_map(|lines| {
